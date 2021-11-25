@@ -40,14 +40,6 @@ class Database
     public function query($statement, $one = false)
     {
         $req = $this->getPdo()->query($statement);
-        
-        if (
-            strpos($statement, 'UPDATE') === 0 ||
-            strpos($statement, 'INSERT') === 0 ||
-            strpos($statement, 'DELETE') === 0
-        ) {
-            return $req;
-        }
 
         $req->setFetchMode(PDO::FETCH_OBJ);
 
@@ -59,27 +51,20 @@ class Database
         return $data;
     }
 
-    public function save($statement, $values, $one = false)
+    public function save($tableName, $sql, $values, $one = false)
     {
-        $req = $this->getPdo()->prepare($statement);
+        $req = $this->getPdo()->prepare("INSERT INTO $tableName SET $sql");
         $res = $req->execute($values);
 
-        if (
-            strpos($statement, 'UPDATE') === 0 ||
-            strpos($statement, 'INSERT') === 0 ||
-            strpos($statement, 'DELETE') === 0
-        ) {
-            return $res;
-        }
-        $req->setFetchMode(PDO::FETCH_OBJ);
+        return $res;
+    }
 
-        if ($one) {
-            $data = $req->fetch();
-        }else {
-            $data = $req->fetchAll();
-        }
+    public function delete($tableName, $sql, $values)
+    {
+        $req = $this->getPdo()->prepare("DELETE FROM $tableName WHERE $sql");
+        $res = $req->execute($values);
 
-        return $data;
+        return $res;
     }
 
     public function lastInsertId()

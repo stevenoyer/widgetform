@@ -11,21 +11,18 @@ $name = 'widget';
 //$secret = '1$9Zyjk0';
 
 $sql_parts = [];
-$attributes = [];
+$values = [];
 
 foreach ($_GET as $k => $v)
 {
     $get[$k] = htmlspecialchars($v);
-    $sql_parts[] = "$key = ?";
-    $attributes[] = htmlspecialchars($v);
+    $sql_parts[] = "$k = ?";
+    $values[] = htmlspecialchars($v);
 }
 $sql = implode(', ', $sql_parts);
-
 extract($get);
 
-
-
-$data = $bdd->save("INSERT INTO form_dev SET $sql", $attributes, true);
+$data = $bdd->save('form_dev', $sql, $values);
 
 var_dump($data);
 
