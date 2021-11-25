@@ -11,8 +11,9 @@ require 'db.class.php';
         $token = htmlspecialchars($_GET['token']);
 
         $res = $bdd->query("SELECT * FROM client WHERE client_id = '$client_id' AND token = '$token'", true);
-
-        var_dump($res);
+        if (!$res) {
+            die('Votre client id ou votre token n\'est pas répertorié dans notre base de données.');
+        }
 
     }else {
         die('Vous n\'avez pas spécifier de client id et de token.');
