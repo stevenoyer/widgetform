@@ -17,5 +17,8 @@ foreach ($_GET as $k => $v)
 
 extract($get);
 
+$data = $bdd->save('INSERT INTO form_dev (prenom, token, client_id)', [$prenom, $secret, $client_id], true);
+
+var_dump($data);
 
 
