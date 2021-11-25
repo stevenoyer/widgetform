@@ -35,6 +35,9 @@ require 'db.class.php';
     <form id="form-widget" action="script.php" medthod="POST">
         <input name="prenom" type="text" placeholder="Votre prénom">
         <input type="submit" value="Envoyer">
+
+        <input type="hidden" name="client_id" value="<?php echo $client_id; ?>">
+        <input type="hidden" name="token" value="<?php echo $token; ?>">
     </form>
     
 </body>
