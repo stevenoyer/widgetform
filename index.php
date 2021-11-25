@@ -4,11 +4,11 @@ use Systrio\Database;
 
 require 'db.class.php';
 
-    $bdd = new Database('localhost', 'widget', 'widget', '1$9Zyjk0');
+    $bdd = new Database('localhost', 'widget', 'root', '');
+    $client_id = htmlspecialchars($_GET['client_id']);
+    $token = htmlspecialchars($_GET['token']);
 
-    if (!empty($_GET['client_id']) && !empty($_GET['token'])) {
-        $client_id = htmlspecialchars($_GET['client_id']);
-        $token = htmlspecialchars($_GET['token']);
+    if (!empty($client_id) && !empty($token)) {
 
         $res = $bdd->query("SELECT * FROM client WHERE client_id = '$client_id' AND token = '$token'", true);
         if (!$res) {
