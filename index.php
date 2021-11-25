@@ -4,7 +4,7 @@ use Systrio\Database;
 
 require 'db.class.php';
 
-    $bdd = new Database('localhost', 'widget', 'root', '');
+    $bdd = new Database('localhost', 'widget', 'widget', '1$9Zyjk0');
     $client_id = htmlspecialchars($_GET['client_id']);
     $token = htmlspecialchars($_GET['token']);
 
