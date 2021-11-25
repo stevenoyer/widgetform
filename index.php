@@ -10,7 +10,7 @@ require 'db.class.php';
         $client_id = htmlspecialchars($_GET['client_id']);
         $token = htmlspecialchars($_GET['token']);
 
-        $res = $bdd->query("SELECT * FROM client WHERE client_id = $client_id AND token = $token", true);
+        $res = $bdd->query("SELECT * FROM client WHERE client_id = '$client_id' AND token = '$token'", true);
 
         var_dump($res);
 
