@@ -15,7 +15,7 @@ class Database
     /**
      * Class constructor.
      */
-    public function __construct($db_host = 'localhost', $db_name = '', $db_user = 'root', $db_pass = '')
+    public function __construct($db_host = 'localhost', $db_name = 'widget', $db_user = 'widget', $db_pass = '1$9Zyjk0')
     {
         $this->db_host = $db_host;
         $this->db_name = $db_name;
