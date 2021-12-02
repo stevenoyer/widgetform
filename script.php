@@ -2,7 +2,7 @@
 
 use Systrio\Database;
 
-require 'db.class.php';
+require_once 'database/db.class.php';
 
 $bdd = new Database();
 
