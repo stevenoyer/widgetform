@@ -7,7 +7,6 @@ require_once 'database/db.class.php';
 $bdd = new Database();
 $client_id = htmlspecialchars($_GET['client_id']);
 $token = htmlspecialchars($_GET['token']);
-$style = htmlspecialchars($_GET['style']);
 
 if (!empty($client_id) && !empty($token)) {
 
@@ -33,11 +32,6 @@ if (!empty($client_id) && !empty($token)) {
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-    <?php if (!empty($style)): ?>
-        <link rel="stylesheet" href="styles/<?= $style ?>.css">
-    <?php else: ?>
-        <link rel="stylesheet" href="styles/default.css">
-    <?php endif; ?>
 </head>
 <body>
 

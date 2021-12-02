@@ -12,13 +12,11 @@ $values = [];
 foreach ($_GET as $k => $v)
 {
     if (!empty($v)) {
-        $get[$k] = htmlspecialchars($v);
         $sql_parts[] = "$k = ?";
         $values[] = htmlspecialchars($v);
     }
 }
 $sql = implode(', ', $sql_parts);
-extract($get);
 
 $data = $bdd->save('form_dev', $sql, $values);
 

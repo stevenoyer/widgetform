@@ -51,7 +51,7 @@ class Database
         return $data;
     }
 
-    public function save($tableName, $sql, $values, $one = false)
+    public function save($tableName, $sql, $values)
     {
         $req = $this->getPdo()->prepare("INSERT INTO $tableName SET $sql");
         $res = $req->execute($values);
